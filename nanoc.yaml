@@ -5,6 +5,7 @@ text_extensions: [ 'cg', 'adoc', 'asciidoc', 'atom', 'coffee', 'css', 'erb', 'ha
 
 prune:
   auto_prune: true
+  exclude: [ '.git' ]
 
 data_sources:
   - type: filesystem
