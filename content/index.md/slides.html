@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title><%= COURSE_SHORT_NAME %></title>
+  <title>Lab Notebook</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -23,11 +23,15 @@
       overflow-x: hidden !important;
     }
 
-    <% SLIDES_CONFIG[:ignore_selectors].each do |s| %>
-    .slides <%= s %> {
+    
+    .slides li ul {
       display: none;
     }
-    <% end %>
+    
+    .slides li p:not(:first-child) {
+      display: none;
+    }
+    
   </style>
 </head>
 
@@ -36,7 +40,13 @@
   <div class="slides">
     <section data-markdown data-separator="^<slide_break></slide_break>" class="scrollable">
       <textarea data-template>
-        <%= yield %>
+        <div class="jumbotron">
+	<h1>Welcome to the Sample Course!</h1>
+	<p>This course is generated when you first install Coursegen. It uses all the features (almost) of the software, to allow you to see what is possible.</p>
+
+	<p>Pito Salas, pitosalas@brandeis.edu</p>
+</div>
+
       </textarea>
     </section>
   </div>
@@ -58,9 +68,9 @@
             breaks: true
         },
 
-        <% SLIDES_CONFIG[:revealjs_opts].each do |k, v| %>
-        <%= k %>: <%= v.to_json %>,
-        <% end %>
+        
+        transition: "slide",
+        
 
         // Optional reveal.js plugins
         plugins: [ RevealMarkdown, RevealHighlight ]
